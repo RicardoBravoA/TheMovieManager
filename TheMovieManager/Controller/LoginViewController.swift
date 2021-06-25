@@ -24,9 +24,6 @@ class LoginViewController: UIViewController {
     
     @IBAction func loginTapped(_ sender: UIButton) {
         ApiClient.getRequestToken(completion: handleRequestToken(success:error:))
-//        performSegue(withIdentifier: "completeLogin", sender: nil)
-        
-        
     }
     
     @IBAction func loginViaWebsiteTapped() {
@@ -35,8 +32,6 @@ class LoginViewController: UIViewController {
     
     private func handleRequestToken(success: Bool, error: Error?) {
         if success {
-            print(ApiClient.Auth.requestToken)
-            
             DispatchQueue.main.async {
                 ApiClient.login(user: self.emailTextField.text ?? "", pwd: self.pwdTextField.text ?? "", completion: self.handleLogin(success:error:))
             }
@@ -45,16 +40,14 @@ class LoginViewController: UIViewController {
     
     private func handleLogin(success: Bool, error: Error?) {
         if success {
-            print(ApiClient.Auth.requestToken)
             ApiClient.session(completion: handleSession(success:error:))
-        } else {
-            print("error")
         }
-        
     }
     
     private func handleSession(success: Bool, error: Error?) {
-        print(ApiClient.Auth.sessionId)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "completeLogin", sender: nil)
+        }
     }
     
 }

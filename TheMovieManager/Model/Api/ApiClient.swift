@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TMDBClient {
+class ApiClient {
     
     static let apiKey = "17fc214660eff995c54514f9bdf6a5fd"
     
@@ -20,7 +20,7 @@ class TMDBClient {
     
     enum Endpoints {
         static let base = "https://api.themoviedb.org/3"
-        static let apiKeyParam = "?api_key=\(TMDBClient.apiKey)"
+        static let apiKeyParam = "?api_key=\(ApiClient.apiKey)"
         
         case getWatchlist
         case getRequestToken
@@ -96,6 +96,29 @@ class TMDBClient {
             do{
                 let response = try JSONDecoder().decode(RequestTokenResponse.self, from: data)
                 Auth.requestToken = response.requestToken
+                completion(true, nil)
+            } catch {
+                completion(false, error)
+            }
+        }
+        task.resume()
+    }
+    
+    class func session(completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.session.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let sessionRequest = SessionRequest(requestToken: Auth.requestToken)
+        request.httpBody = try! JSONEncoder().encode(sessionRequest)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(false, error)
+                return
+            }
+            do {
+                let response = try JSONDecoder().decode(SessionResponse.self, from: data)
                 completion(true, nil)
             } catch {
                 completion(false, error)

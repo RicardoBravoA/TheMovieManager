@@ -25,6 +25,7 @@ class TMDBClient {
         case getWatchlist
         case getRequestToken
         case login
+        case session
         
         var stringValue: String {
             switch self {
@@ -34,6 +35,8 @@ class TMDBClient {
                     return Endpoints.base + "/authentication/token/new" + Endpoints.apiKeyParam
                 case .login:
                     return Endpoints.base + "/authentication/token/validate_with_login" + Endpoints.apiKeyParam
+                case .session:
+                    return Endpoints.base + "/authentication/session/new" + Endpoints.apiKeyParam
             }
         }
         

@@ -115,8 +115,8 @@
 			children = (
 				231688712121CB22003C820E /* Data */,
 				231688662121CA71003C820E /* TMDB Client */,
-				231688672121CA79003C820E /* TMDB Requests */,
-				231688682121CA87003C820E /* TMDB Responses */,
+				231688672121CA79003C820E /* Request */,
+				231688682121CA87003C820E /* Response */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,7 +165,7 @@
 			path = "TMDB Client";
 			sourceTree = "<group>";
 		};
-		231688672121CA79003C820E /* TMDB Requests */ = {
+		231688672121CA79003C820E /* Request */ = {
 			isa = PBXGroup;
 			children = (
 				2316887E2121CBC7003C820E /* MarkFavorite.swift */,
@@ -174,10 +174,10 @@
 				231688842121CBEA003C820E /* LogoutRequest.swift */,
 				231688862121CBF9003C820E /* PostSession.swift */,
 			);
-			path = "TMDB Requests";
+			path = Request;
 			sourceTree = "<group>";
 		};
-		231688682121CA87003C820E /* TMDB Responses */ = {
+		231688682121CA87003C820E /* Response */ = {
 			isa = PBXGroup;
 			children = (
 				231688742121CB43003C820E /* Movie.swift */,
@@ -186,7 +186,7 @@
 				2316887A2121CB87003C820E /* TMDBResponse.swift */,
 				2316887C2121CB9A003C820E /* SessionResponse.swift */,
 			);
-			path = "TMDB Responses";
+			path = Response;
 			sourceTree = "<group>";
 		};
 		231688712121CB22003C820E /* Data */ = {

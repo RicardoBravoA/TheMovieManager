@@ -18,7 +18,7 @@
 		231688632121CA3D003C820E /* WatchlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688622121CA3D003C820E /* WatchlistViewController.swift */; };
 		231688652121CA51003C820E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688642121CA51003C820E /* FavoritesViewController.swift */; };
 		2316886A2121CADA003C820E /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688692121CADA003C820E /* LoginButton.swift */; };
-		2316886C2121CAF6003C820E /* TMDBClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316886B2121CAF6003C820E /* TMDBClient.swift */; };
+		2316886C2121CAF6003C820E /* ApiClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316886B2121CAF6003C820E /* ApiClient.swift */; };
 		231688732121CB2D003C820E /* MovieModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688722121CB2D003C820E /* MovieModel.swift */; };
 		231688752121CB43003C820E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688742121CB43003C820E /* Movie.swift */; };
 		231688772121CB50003C820E /* MovieResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688762121CB50003C820E /* MovieResults.swift */; };
@@ -29,7 +29,7 @@
 		231688812121CBD6003C820E /* MarkWatchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688802121CBD6003C820E /* MarkWatchlist.swift */; };
 		231688832121CBE3003C820E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688822121CBE3003C820E /* LoginRequest.swift */; };
 		231688852121CBEA003C820E /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688842121CBEA003C820E /* LogoutRequest.swift */; };
-		231688872121CBF9003C820E /* PostSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688862121CBF9003C820E /* PostSession.swift */; };
+		231688872121CBF9003C820E /* SessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688862121CBF9003C820E /* SessionRequest.swift */; };
 		231688892121CC10003C820E /* TMDBTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688882121CC10003C820E /* TMDBTypes.swift */; };
 		2316888B212230C8003C820E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316888A212230C8003C820E /* UIViewController+Extension.swift */; };
 		2316888D2122322D003C820E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316888C2122322D003C820E /* Colors.swift */; };
@@ -51,7 +51,7 @@
 		231688622121CA3D003C820E /* WatchlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlistViewController.swift; sourceTree = "<group>"; };
 		231688642121CA51003C820E /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		231688692121CADA003C820E /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
-		2316886B2121CAF6003C820E /* TMDBClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBClient.swift; sourceTree = "<group>"; };
+		2316886B2121CAF6003C820E /* ApiClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiClient.swift; sourceTree = "<group>"; };
 		231688722121CB2D003C820E /* MovieModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieModel.swift; sourceTree = "<group>"; };
 		231688742121CB43003C820E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		231688762121CB50003C820E /* MovieResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResults.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		231688802121CBD6003C820E /* MarkWatchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkWatchlist.swift; sourceTree = "<group>"; };
 		231688822121CBE3003C820E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		231688842121CBEA003C820E /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
-		231688862121CBF9003C820E /* PostSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostSession.swift; sourceTree = "<group>"; };
+		231688862121CBF9003C820E /* SessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequest.swift; sourceTree = "<group>"; };
 		231688882121CC10003C820E /* TMDBTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTypes.swift; sourceTree = "<group>"; };
 		2316888A212230C8003C820E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		2316888C2122322D003C820E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -114,9 +114,9 @@
 			isa = PBXGroup;
 			children = (
 				231688712121CB22003C820E /* Data */,
-				231688662121CA71003C820E /* TMDB Client */,
-				231688672121CA79003C820E /* TMDB Requests */,
-				231688682121CA87003C820E /* TMDB Responses */,
+				231688662121CA71003C820E /* Api */,
+				231688672121CA79003C820E /* Request */,
+				231688682121CA87003C820E /* Response */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -156,28 +156,28 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		231688662121CA71003C820E /* TMDB Client */ = {
+		231688662121CA71003C820E /* Api */ = {
 			isa = PBXGroup;
 			children = (
-				2316886B2121CAF6003C820E /* TMDBClient.swift */,
+				2316886B2121CAF6003C820E /* ApiClient.swift */,
 				231688882121CC10003C820E /* TMDBTypes.swift */,
 			);
-			path = "TMDB Client";
+			path = Api;
 			sourceTree = "<group>";
 		};
-		231688672121CA79003C820E /* TMDB Requests */ = {
+		231688672121CA79003C820E /* Request */ = {
 			isa = PBXGroup;
 			children = (
 				2316887E2121CBC7003C820E /* MarkFavorite.swift */,
 				231688802121CBD6003C820E /* MarkWatchlist.swift */,
 				231688822121CBE3003C820E /* LoginRequest.swift */,
 				231688842121CBEA003C820E /* LogoutRequest.swift */,
-				231688862121CBF9003C820E /* PostSession.swift */,
+				231688862121CBF9003C820E /* SessionRequest.swift */,
 			);
-			path = "TMDB Requests";
+			path = Request;
 			sourceTree = "<group>";
 		};
-		231688682121CA87003C820E /* TMDB Responses */ = {
+		231688682121CA87003C820E /* Response */ = {
 			isa = PBXGroup;
 			children = (
 				231688742121CB43003C820E /* Movie.swift */,
@@ -186,7 +186,7 @@
 				2316887A2121CB87003C820E /* TMDBResponse.swift */,
 				2316887C2121CB9A003C820E /* SessionResponse.swift */,
 			);
-			path = "TMDB Responses";
+			path = Response;
 			sourceTree = "<group>";
 		};
 		231688712121CB22003C820E /* Data */ = {
@@ -272,7 +272,7 @@
 			files = (
 				2316884B2121C92C003C820E /* LoginViewController.swift in Sources */,
 				231688732121CB2D003C820E /* MovieModel.swift in Sources */,
-				2316886C2121CAF6003C820E /* TMDBClient.swift in Sources */,
+				2316886C2121CAF6003C820E /* ApiClient.swift in Sources */,
 				231688632121CA3D003C820E /* WatchlistViewController.swift in Sources */,
 				231688892121CC10003C820E /* TMDBTypes.swift in Sources */,
 				2316888B212230C8003C820E /* UIViewController+Extension.swift in Sources */,
@@ -281,7 +281,7 @@
 				231688812121CBD6003C820E /* MarkWatchlist.swift in Sources */,
 				231688612121CA30003C820E /* SearchViewController.swift in Sources */,
 				231688772121CB50003C820E /* MovieResults.swift in Sources */,
-				231688872121CBF9003C820E /* PostSession.swift in Sources */,
+				231688872121CBF9003C820E /* SessionRequest.swift in Sources */,
 				2316888D2122322D003C820E /* Colors.swift in Sources */,
 				2316888F2122646A003C820E /* GradientView.swift in Sources */,
 				2316887F2121CBC7003C820E /* MarkFavorite.swift in Sources */,

@@ -119,6 +119,7 @@ class ApiClient {
             }
             do {
                 let response = try JSONDecoder().decode(SessionResponse.self, from: data)
+                Auth.sessionId = response.sessionId
                 completion(true, nil)
             } catch {
                 completion(false, error)

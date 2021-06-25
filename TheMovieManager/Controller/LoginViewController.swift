@@ -18,12 +18,12 @@ class LoginViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        emailTextField.text = ""
-        pwdTextField.text = ""
+        emailTextField.text = "richard90_15@hotmail.com"
+        pwdTextField.text = "123456789"
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
-        TMDBClient.getRequestToken(completion: handleRequestToken(success:error:))
+        ApiClient.getRequestToken(completion: handleRequestToken(success:error:))
 //        performSegue(withIdentifier: "completeLogin", sender: nil)
         
         
@@ -35,16 +35,26 @@ class LoginViewController: UIViewController {
     
     private func handleRequestToken(success: Bool, error: Error?) {
         if success {
-            print(TMDBClient.Auth.requestToken)
+            print(ApiClient.Auth.requestToken)
             
             DispatchQueue.main.async {
-                TMDBClient.login(user: self.emailTextField.text ?? "", pwd: self.pwdTextField.text ?? "", completion: self.handleLogin(success:error:))
+                ApiClient.login(user: self.emailTextField.text ?? "", pwd: self.pwdTextField.text ?? "", completion: self.handleLogin(success:error:))
             }
         }
     }
     
     private func handleLogin(success: Bool, error: Error?) {
-        print(TMDBClient.Auth.requestToken)
+        if success {
+            print(ApiClient.Auth.requestToken)
+            ApiClient.session(completion: handleSession(success:error:))
+        } else {
+            print("error")
+        }
+        
+    }
+    
+    private func handleSession(success: Bool, error: Error?) {
+        print(ApiClient.Auth.sessionId)
     }
     
 }

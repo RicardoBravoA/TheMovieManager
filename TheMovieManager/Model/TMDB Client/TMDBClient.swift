@@ -33,7 +33,7 @@ class TMDBClient {
                 case .getRequestToken:
                     return Endpoints.base + "/authentication/token/new" + Endpoints.apiKeyParam
                 case .login:
-                    return Endpoints.base + "/authentication/token/new" + Endpoints.apiKeyParam
+                    return Endpoints.base + "/authentication/token/validate_with_login" + Endpoints.apiKeyParam
             }
         }
         
@@ -68,6 +68,30 @@ class TMDBClient {
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(RequestTokenResponse.self, from: data)
+                Auth.requestToken = response.requestToken
+                completion(true, nil)
+            } catch {
+                completion(false, error)
+            }
+        }
+        task.resume()
+    }
+    
+    class func login(user: String, pwd: String, completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.login.url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        let loginRequest = LoginRequest(username: user, pwd: pwd, requestToken: Auth.requestToken)
+        request.httpBody = try! JSONEncoder().encode(loginRequest)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(false, error)
+                return
+            }
+            do{
+                let response = try JSONDecoder().decode(RequestTokenResponse.self, from: data)
                 Auth.requestToken = response.requestToken
                 completion(true, nil)
             } catch {

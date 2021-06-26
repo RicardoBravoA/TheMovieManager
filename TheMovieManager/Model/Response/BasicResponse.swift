@@ -1,5 +1,5 @@
 //
-//  MarkFavoriteResponse.swift
+//  BasicResponse.swift
 //  TheMovieManager
 //
 //  Created by Ricardo Bravo on 26/06/21.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MarkFavoriteResponse: Codable {
+struct BasicResponse: Codable {
     let statusCode: Int
     let statusMessage: String
     

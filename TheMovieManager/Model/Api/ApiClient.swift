@@ -156,15 +156,21 @@ class ApiClient {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(ResponseType.self, from: data)
-                completion(response, nil)
+                DispatchQueue.main.async {
+                    completion(response, nil)
+                }
             } catch {
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
         }
         task.resume()

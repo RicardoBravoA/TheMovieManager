@@ -62,21 +62,14 @@ class ApiClient {
     }
     
     class func getRequestToken(completion: @escaping (Bool, Error?) -> Void) {
-        let task = URLSession.shared.dataTask(with: Endpoints.getRequestToken.url) { data, response, error in
-            guard let data = data else {
-                completion(false, error)
-                return
-            }
-            let decoder = JSONDecoder()
-            do {
-                let response = try decoder.decode(RequestTokenResponse.self, from: data)
+        taskForGETRequest(url: Endpoints.getRequestToken.url, response: RequestTokenResponse.self) { response, error in
+            if let response = response {
                 Auth.requestToken = response.requestToken
                 completion(true, nil)
-            } catch {
+            } else {
                 completion(false, error)
             }
         }
-        task.resume()
     }
     
     class func login(user: String, pwd: String, completion: @escaping (Bool, Error?) -> Void) {

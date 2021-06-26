@@ -28,6 +28,7 @@ class ApiClient {
         case session
         case webAuth
         case logout
+        case favorite
         
         var stringValue: String {
             switch self {
@@ -43,6 +44,8 @@ class ApiClient {
                     return "https://www.themoviedb.org/authenticate/" + Auth.requestToken + "?redirect_to=themoviemanager:authenticate"
                 case .logout:
                     return Endpoints.base + "/authentication/session" + Endpoints.apiKeyParam
+                case .favorite:
+                    return Endpoints.base + "/account/\(Auth.accountId)/favorite/movies" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
             }
         }
         
@@ -108,6 +111,16 @@ class ApiClient {
                 completion(true, nil)
             } else {
                 completion(false, error)
+            }
+        }
+    }
+    
+    class func favorite(completion: @escaping ([Movie], Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.favorite.url, response: MovieResults.self) { response, error in
+            if let response = response {
+                completion(response.results, nil)
+            } else {
+                completion([], error)
             }
         }
     }

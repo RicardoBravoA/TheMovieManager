@@ -137,14 +137,15 @@ class ApiClient {
         }
     }
     
-    class func search(query: String, completion: @escaping ([Movie], Error?) -> Void) {
-        taskForGETRequest(url: Endpoints.search(query).url, response: MovieResults.self) { response, error in
+    class func search(query: String, completion: @escaping ([Movie], Error?) -> Void) -> URLSessionTask {
+        let task = taskForGETRequest(url: Endpoints.search(query).url, response: MovieResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
             } else {
                 completion([], error)
             }
         }
+        return task
     }
     
     class func markFavorite(mediaType: String, mediaId: Int, favorite: Bool, completion: @escaping (Bool, Error?) -> Void) {
@@ -186,7 +187,7 @@ class ApiClient {
         task.resume()
     }
     
-    class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+    @discardableResult class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) -> URLSessionTask {
         
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else {
@@ -208,6 +209,7 @@ class ApiClient {
             }
         }
         task.resume()
+        return task
     }
     
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {

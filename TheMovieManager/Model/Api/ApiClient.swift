@@ -29,6 +29,7 @@ class ApiClient {
         case webAuth
         case logout
         case favorite
+        case search(String)
         
         var stringValue: String {
             switch self {
@@ -46,6 +47,8 @@ class ApiClient {
                     return Endpoints.base + "/authentication/session" + Endpoints.apiKeyParam
                 case .favorite:
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite/movies" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
+                case .search(let value):
+                    return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value)"
             }
         }
         
@@ -117,6 +120,16 @@ class ApiClient {
     
     class func favorite(completion: @escaping ([Movie], Error?) -> Void) {
         taskForGETRequest(url: Endpoints.favorite.url, response: MovieResults.self) { response, error in
+            if let response = response {
+                completion(response.results, nil)
+            } else {
+                completion([], error)
+            }
+        }
+    }
+    
+    class func search(query: String, completion: @escaping ([Movie], Error?) -> Void) {
+        taskForGETRequest(url: Endpoints.search(query).url, response: MovieResults.self) { response, error in
             if let response = response {
                 completion(response.results, nil)
             } else {

@@ -36,6 +36,7 @@
 		2316888F2122646A003C820E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316888E2122646A003C820E /* GradientView.swift */; };
 		2316889121226AE7003C820E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316889021226AE7003C820E /* LoginTextField.swift */; };
 		C6C827DE2686C0470049BB78 /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C827DD2686C0470049BB78 /* LogoutResponse.swift */; };
+		C6C827E22686EBE00049BB78 /* MarkFavoriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C827E12686EBE00049BB78 /* MarkFavoriteResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		2316888E2122646A003C820E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		2316889021226AE7003C820E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		C6C827DD2686C0470049BB78 /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
+		C6C827E12686EBE00049BB78 /* MarkFavoriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFavoriteResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +190,7 @@
 				2316887A2121CB87003C820E /* TMDBResponse.swift */,
 				2316887C2121CB9A003C820E /* SessionResponse.swift */,
 				C6C827DD2686C0470049BB78 /* LogoutResponse.swift */,
+				C6C827E12686EBE00049BB78 /* MarkFavoriteResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				231688832121CBE3003C820E /* LoginRequest.swift in Sources */,
 				231688752121CB43003C820E /* Movie.swift in Sources */,
 				2316886A2121CADA003C820E /* LoginButton.swift in Sources */,
+				C6C827E22686EBE00049BB78 /* MarkFavoriteResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

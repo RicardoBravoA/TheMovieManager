@@ -14,6 +14,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var pwdTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var loginViaWebsiteButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -23,10 +24,12 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginTapped(_ sender: UIButton) {
+        setLoggingIn(true)
         ApiClient.getRequestToken(completion: handleRequestToken(success:error:))
     }
     
     @IBAction func loginViaWebsiteTapped() {
+        setLoggingIn(true)
         ApiClient.getRequestToken { success, error in
             if success {
                 UIApplication.shared.open(ApiClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
@@ -47,7 +50,18 @@ class LoginViewController: UIViewController {
     }
     
     func handleSession(success: Bool, error: Error?) {
-        self.performSegue(withIdentifier: "completeLogin", sender: nil)
+        setLoggingIn(false)
+        if success {
+            self.performSegue(withIdentifier: "completeLogin", sender: nil)
+        }
+    }
+    
+    func setLoggingIn(_ loggingIn: Bool) {
+        if loggingIn {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
     
 }

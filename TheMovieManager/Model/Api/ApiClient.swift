@@ -144,9 +144,8 @@ class ApiClient {
     class func markFavorite(mediaType: String, mediaId: Int, favorite: Bool, completion: @escaping (Bool, Error?) -> Void) {
         let markFavoriteRequest = MarkFavoriteRequest(mediaType: mediaType, mediaId: mediaId, favorite: favorite)
         
-        taskForPOSTRequest(url: Endpoints.markFavorite.url, body: markFavoriteRequest, response: RequestTokenResponse.self) { response, error in
-            if let response = response {
-                Auth.requestToken = response.requestToken
+        taskForPOSTRequest(url: Endpoints.markFavorite.url, body: markFavoriteRequest, response: MarkFavoriteResponse.self) { response, error in
+            if response != nil {
                 completion(true, nil)
             } else {
                 completion(false, error)

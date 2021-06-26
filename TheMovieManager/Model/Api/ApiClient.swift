@@ -30,7 +30,7 @@ class ApiClient {
         case logout
         case favorite
         case search(String)
-        case saveFavorite
+        case markFavorite
         
         var stringValue: String {
             switch self {
@@ -50,7 +50,7 @@ class ApiClient {
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite/movies" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
                 case .search(let value):
                     return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
-                case .saveFavorite:
+                case .markFavorite:
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
             }
         }

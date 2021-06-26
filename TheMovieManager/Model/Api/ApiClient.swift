@@ -27,6 +27,7 @@ class ApiClient {
         case login
         case session
         case webAuth
+        case logout
         
         var stringValue: String {
             switch self {
@@ -40,6 +41,8 @@ class ApiClient {
                     return Endpoints.base + "/authentication/session/new" + Endpoints.apiKeyParam
                 case .webAuth:
                     return "https://www.themoviedb.org/authenticate/" + Auth.requestToken + "?redirect_to=themoviemanager:authenticate"
+                case .logout:
+                    return Endpoints.base + "/authentication/session" + Endpoints.apiKeyParam
             }
         }
         
@@ -123,6 +126,29 @@ class ApiClient {
             do {
                 let response = try JSONDecoder().decode(SessionResponse.self, from: data)
                 Auth.sessionId = response.sessionId
+                completion(true, nil)
+            } catch {
+                completion(false, error)
+            }
+        }
+        task.resume()
+    }
+    
+    class func logout(completion: @escaping (Bool, Error?) -> Void) {
+        var request = URLRequest(url: Endpoints.logout.url)
+        request.httpMethod = "DELETE"
+        
+        let logoutRequest = LogoutRequest(sessionId: Auth.sessionId)
+        request.httpBody = try! JSONEncoder().encode(logoutRequest)
+        
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data else {
+                completion(false, error)
+                return
+            }
+            do {
+                _ = try JSONDecoder().decode(LogoutResponse.self, from: data)
+                Auth.sessionId = ""
                 completion(true, nil)
             } catch {
                 completion(false, error)

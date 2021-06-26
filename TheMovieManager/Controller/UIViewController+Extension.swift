@@ -11,7 +11,13 @@ import UIKit
 extension UIViewController {
     
     @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+        ApiClient.logout { success, error in
+            if success {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
 }

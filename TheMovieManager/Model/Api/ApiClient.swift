@@ -137,6 +137,7 @@ class ApiClient {
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
         var request = URLRequest(url: Endpoints.logout.url)
         request.httpMethod = "DELETE"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         let logoutRequest = LogoutRequest(sessionId: Auth.sessionId)
         request.httpBody = try! JSONEncoder().encode(logoutRequest)
@@ -149,6 +150,7 @@ class ApiClient {
             do {
                 _ = try JSONDecoder().decode(LogoutResponse.self, from: data)
                 Auth.sessionId = ""
+                Auth.requestToken = ""
                 completion(true, nil)
             } catch {
                 completion(false, error)

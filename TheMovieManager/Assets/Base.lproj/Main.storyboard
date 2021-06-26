@@ -121,7 +121,7 @@
         <scene sceneID="YFI-aL-1fW">
             <objects>
                 <navigationController id="uaE-Ot-MhX" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="Favorite" id="FFn-7V-wfS"/>
+                    <tabBarItem key="tabBarItem" title="Favorites" image="heart.fill" catalog="system" id="FFn-7V-wfS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="NsS-9I-s2u">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -190,7 +190,7 @@
         <scene sceneID="Hrs-Qr-fbX">
             <objects>
                 <navigationController id="fMU-fd-Ovv" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watchlist" image="List" id="Afd-zx-z0G"/>
+                    <tabBarItem key="tabBarItem" title="Watchlist" image="list.dash" catalog="system" id="Afd-zx-z0G"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UFF-Zp-6Lf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -269,12 +269,12 @@
                                     <constraint firstAttribute="height" constant="44" id="URE-wt-fx7"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Item" image="List" id="uz8-sW-Zea">
+                                    <barButtonItem title="Item" image="list.dash" catalog="system" id="uz8-sW-Zea">
                                         <connections>
                                             <action selector="watchlistButtonTapped:" destination="bMS-kJ-dg1" id="QGK-Tl-lwE"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Item" image="Favorite" id="hMm-5H-1Df">
+                                    <barButtonItem title="Item" image="heart.fill" catalog="system" id="hMm-5H-1Df">
                                         <connections>
                                             <action selector="favoriteButtonTapped:" destination="bMS-kJ-dg1" id="iMs-7M-Goo"/>
                                         </connections>
@@ -330,7 +330,7 @@
         <scene sceneID="GPc-pi-SAd">
             <objects>
                 <navigationController id="WNA-Kx-mKN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Search" image="Genre" id="59y-Jw-96W"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="59y-Jw-96W"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="2ua-eg-dTl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -412,8 +412,8 @@
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Camera" width="64" height="64"/>
-        <image name="Favorite" width="32" height="32"/>
-        <image name="Genre" width="30" height="30"/>
-        <image name="List" width="32" height="32"/>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <image name="list.dash" catalog="system" width="128" height="85"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
     </resources>
 </document>

@@ -54,6 +54,9 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
         let movie = MovieModel.watchlist[indexPath.row]
         
         cell.textLabel?.text = movie.title
+        if #available(iOS 13.0, *) {
+            cell.imageView?.image = UIImage(systemName: "ticket")
+        }
         
         if let posterPah = movie.posterPath {
             ApiClient.image(posterPath: posterPah) { data, error in

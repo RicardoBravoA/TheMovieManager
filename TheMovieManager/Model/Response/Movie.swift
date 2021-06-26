@@ -11,22 +11,22 @@ import Foundation
 struct Movie: Codable, Equatable {
     
     let posterPath: String?
-    let adult: Bool
-    let overview: String
-    let releaseDate: String
-    let genreIds: [Int]
+    let adult: Bool?
+    let overview: String?
+    let releaseDate: String?
+    let genreIds: [Int]?
     let id: Int
     let originalTitle: String
-    let originalLanguage: String
+    let originalLanguage: String?
     let title: String
     let backdropPath: String?
-    let popularity: Double
-    let voteCount: Int
-    let video: Bool
-    let voteAverage: Double
+    let popularity: Double?
+    let voteCount: Int?
+    let video: Bool?
+    let voteAverage: Double?
     
     var releaseYear: String {
-        return String(releaseDate.prefix(4))
+        return String(releaseDate?.prefix(4) ?? "")
     }
     
     enum CodingKeys: String, CodingKey {

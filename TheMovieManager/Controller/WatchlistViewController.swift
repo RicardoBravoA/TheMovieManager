@@ -55,6 +55,14 @@ extension WatchlistViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.textLabel?.text = movie.title
         
+        if let posterPah = movie.posterPath {
+            ApiClient.image(posterPath: posterPah) { data, error in
+                guard let data = data else { return }
+                cell.imageView?.image = UIImage(data: data)
+                cell.setNeedsLayout()
+            }
+        }
+        
         return cell
     }
     

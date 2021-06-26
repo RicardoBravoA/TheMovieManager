@@ -51,7 +51,7 @@ class ApiClient {
                 case .favorite:
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite/movies" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
                 case .search(let value):
-                    return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
+                    return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "xyz")"
                 case .markFavorite:
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
                 case .markWatchlist:
@@ -172,7 +172,6 @@ class ApiClient {
     }
     
     class func image(posterPath: String, completion: @escaping (Data?, Error?) -> Void) {
-        print(Endpoints.image(posterPath).url)
         let task = URLSession.shared.dataTask(with: Endpoints.image(posterPath).url) { data, response, error in
             guard let data = data else {
                 DispatchQueue.main.async {

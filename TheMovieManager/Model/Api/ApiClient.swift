@@ -203,8 +203,15 @@ class ApiClient {
                     completion(response, nil)
                 }
             } catch {
-                DispatchQueue.main.async {
-                    completion(nil, error)
+                do {
+                    let errorResponse = try decoder.decode(ErrorResponse.self, from: data)
+                    DispatchQueue.main.async {
+                        completion(nil, errorResponse)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(nil, error)
+                    }
                 }
             }
         }

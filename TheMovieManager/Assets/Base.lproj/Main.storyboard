@@ -280,7 +280,7 @@
                                             <action selector="watchlistButtonTapped:" destination="bMS-kJ-dg1" id="QGK-Tl-lwE"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Item" id="hMm-5H-1Df">
+                                    <barButtonItem title="Item" image="heart.fill" catalog="system" id="hMm-5H-1Df">
                                         <connections>
                                             <action selector="favoriteButtonTapped:" destination="bMS-kJ-dg1" id="iMs-7M-Goo"/>
                                         </connections>

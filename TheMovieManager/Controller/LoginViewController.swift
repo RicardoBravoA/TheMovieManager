@@ -27,7 +27,6 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func loginViaWebsiteTapped() {
-//        performSegue(withIdentifier: "completeLogin", sender: nil)
         ApiClient.getRequestToken { success, error in
             if success {
                 DispatchQueue.main.async {
@@ -39,9 +38,7 @@ class LoginViewController: UIViewController {
     
     private func handleRequestToken(success: Bool, error: Error?) {
         if success {
-            DispatchQueue.main.async {
-                ApiClient.login(user: self.emailTextField.text ?? "", pwd: self.pwdTextField.text ?? "", completion: self.handleLogin(success:error:))
-            }
+            ApiClient.login(user: self.emailTextField.text ?? "", pwd: self.pwdTextField.text ?? "", completion: self.handleLogin(success:error:))
         }
     }
     

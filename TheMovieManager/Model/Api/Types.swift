@@ -1,5 +1,5 @@
 //
-//  TMDBTypes.swift
+//  Types.swift
 //  TheMovieManager
 //
 //  Created by Owen LaRosa on 8/13/18.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-enum MediaType: String, Codable {
+enum Types: String, Codable {
     case movie, tv
 }

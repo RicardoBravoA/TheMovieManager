@@ -29,7 +29,7 @@
 		231688832121CBE3003C820E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688822121CBE3003C820E /* LoginRequest.swift */; };
 		231688852121CBEA003C820E /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688842121CBEA003C820E /* LogoutRequest.swift */; };
 		231688872121CBF9003C820E /* SessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688862121CBF9003C820E /* SessionRequest.swift */; };
-		231688892121CC10003C820E /* TMDBTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688882121CC10003C820E /* TMDBTypes.swift */; };
+		231688892121CC10003C820E /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688882121CC10003C820E /* Types.swift */; };
 		2316888B212230C8003C820E /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316888A212230C8003C820E /* UIViewController+Extension.swift */; };
 		2316888D2122322D003C820E /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316888C2122322D003C820E /* Colors.swift */; };
 		2316888F2122646A003C820E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316888E2122646A003C820E /* GradientView.swift */; };
@@ -63,7 +63,7 @@
 		231688822121CBE3003C820E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		231688842121CBEA003C820E /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		231688862121CBF9003C820E /* SessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequest.swift; sourceTree = "<group>"; };
-		231688882121CC10003C820E /* TMDBTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBTypes.swift; sourceTree = "<group>"; };
+		231688882121CC10003C820E /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		2316888A212230C8003C820E /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		2316888C2122322D003C820E /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		2316888E2122646A003C820E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				2316886B2121CAF6003C820E /* ApiClient.swift */,
-				231688882121CC10003C820E /* TMDBTypes.swift */,
+				231688882121CC10003C820E /* Types.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 				231688732121CB2D003C820E /* MovieModel.swift in Sources */,
 				2316886C2121CAF6003C820E /* ApiClient.swift in Sources */,
 				231688632121CA3D003C820E /* WatchlistViewController.swift in Sources */,
-				231688892121CC10003C820E /* TMDBTypes.swift in Sources */,
+				231688892121CC10003C820E /* Types.swift in Sources */,
 				2316888B212230C8003C820E /* UIViewController+Extension.swift in Sources */,
 				231688852121CBEA003C820E /* LogoutRequest.swift in Sources */,
 				2316885F2121CA19003C820E /* MovieDetailViewController.swift in Sources */,

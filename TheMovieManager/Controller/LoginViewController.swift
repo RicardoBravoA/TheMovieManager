@@ -29,9 +29,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginViaWebsiteTapped() {
         ApiClient.getRequestToken { success, error in
             if success {
-                DispatchQueue.main.async {
-                    UIApplication.shared.open(ApiClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
-                }
+                UIApplication.shared.open(ApiClient.Endpoints.webAuth.url, options: [:], completionHandler: nil)
             }
         }
     }
@@ -49,9 +47,7 @@ class LoginViewController: UIViewController {
     }
     
     func handleSession(success: Bool, error: Error?) {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "completeLogin", sender: nil)
-        }
+        self.performSegue(withIdentifier: "completeLogin", sender: nil)
     }
     
 }

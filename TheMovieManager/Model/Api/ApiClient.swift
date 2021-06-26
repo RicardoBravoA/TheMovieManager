@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ApiClient {
     
@@ -32,6 +33,7 @@ class ApiClient {
         case search(String)
         case markFavorite
         case markWatchlist
+        case image(String)
         
         var stringValue: String {
             switch self {
@@ -55,6 +57,8 @@ class ApiClient {
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
                 case .markWatchlist:
                     return Endpoints.base + "/account/\(Auth.accountId)/watchlist" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
+                case .image(let posterPath):
+                    return "https://image.tmdb.org/t/p/w500\(posterPath)"
             }
         }
         
@@ -166,6 +170,23 @@ class ApiClient {
                 completion(false, error)
             }
         }
+    }
+    
+    class func image(posterPath: String, completion: @escaping (UIImage?, Error?) -> Void) {
+        print(Endpoints.image(posterPath).url)
+        let task = URLSession.shared.dataTask(with: Endpoints.image(posterPath).url) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            let image = UIImage(data: data)
+            DispatchQueue.main.async {
+                completion(image, nil)
+            }
+        }
+        task.resume()
     }
     
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {

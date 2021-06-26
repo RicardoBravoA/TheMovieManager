@@ -48,7 +48,7 @@ class ApiClient {
                 case .favorite:
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite/movies" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
                 case .search(let value):
-                    return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value)"
+                    return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
             }
         }
         

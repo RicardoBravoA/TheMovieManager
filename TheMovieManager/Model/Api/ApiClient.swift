@@ -86,27 +86,16 @@ class ApiClient {
     }
     
     class func session(completion: @escaping (Bool, Error?) -> Void) {
-        var request = URLRequest(url: Endpoints.session.url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         let sessionRequest = SessionRequest(requestToken: Auth.requestToken)
-        request.httpBody = try! JSONEncoder().encode(sessionRequest)
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                completion(false, error)
-                return
-            }
-            do {
-                let response = try JSONDecoder().decode(SessionResponse.self, from: data)
+        taskForPOSTRequest(url: Endpoints.session.url, body: sessionRequest, response: SessionResponse.self) { response, error in
+            if let response = response {
                 Auth.sessionId = response.sessionId
                 completion(true, nil)
-            } catch {
+            } else {
                 completion(false, error)
             }
         }
-        task.resume()
     }
     
     class func logout(completion: @escaping (Bool, Error?) -> Void) {

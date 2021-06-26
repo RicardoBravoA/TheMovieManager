@@ -40,12 +40,17 @@ class LoginViewController: UIViewController {
     private func handleRequestToken(success: Bool, error: Error?) {
         if success {
             ApiClient.login(user: self.emailTextField.text ?? "", pwd: self.pwdTextField.text ?? "", completion: self.handleLogin(success:error:))
+        } else {
+            showLoginFailure(message: error?.localizedDescription ?? "")
         }
     }
     
     private func handleLogin(success: Bool, error: Error?) {
         if success {
             ApiClient.session(completion: handleSession(success:error:))
+        } else {
+            setLoggingIn(false)
+            showLoginFailure(message: error?.localizedDescription ?? "")
         }
     }
     
@@ -53,6 +58,8 @@ class LoginViewController: UIViewController {
         setLoggingIn(false)
         if success {
             self.performSegue(withIdentifier: "completeLogin", sender: nil)
+        } else {
+            showLoginFailure(message: error?.localizedDescription ?? "")
         }
     }
     
@@ -67,6 +74,12 @@ class LoginViewController: UIViewController {
         pwdTextField.isEnabled = !loggingIn
         loginButton.isEnabled = !loggingIn
         loginViaWebsiteButton.isEnabled = !loggingIn
+    }
+    
+    private func showLoginFailure(message: String) {
+        let alertController = UIAlertController(title: "Login Failure", message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        show(alertController, sender: nil)
     }
     
 }

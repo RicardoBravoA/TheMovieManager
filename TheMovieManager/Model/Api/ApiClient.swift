@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import UIKit
 
 class ApiClient {
     
@@ -172,7 +171,7 @@ class ApiClient {
         }
     }
     
-    class func image(posterPath: String, completion: @escaping (UIImage?, Error?) -> Void) {
+    class func image(posterPath: String, completion: @escaping (Data?, Error?) -> Void) {
         print(Endpoints.image(posterPath).url)
         let task = URLSession.shared.dataTask(with: Endpoints.image(posterPath).url) { data, response, error in
             guard let data = data else {
@@ -181,9 +180,8 @@ class ApiClient {
                 }
                 return
             }
-            let image = UIImage(data: data)
             DispatchQueue.main.async {
-                completion(image, nil)
+                completion(data, nil)
             }
         }
         task.resume()

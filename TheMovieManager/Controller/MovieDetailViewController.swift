@@ -27,8 +27,11 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ApiClient.image(posterPath: movie.posterPath ?? "") { image, error in
-            self.imageView.image = image
+        if let posterPath = movie.posterPath {
+            ApiClient.image(posterPath: posterPath) { data, error in
+                guard let data = data else { return}
+                self.imageView.image = UIImage(data: data)
+            }
         }
         
         navigationItem.title = movie.title

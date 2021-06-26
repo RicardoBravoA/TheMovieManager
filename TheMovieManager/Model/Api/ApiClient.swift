@@ -99,28 +99,17 @@ class ApiClient {
     }
     
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
-        var request = URLRequest(url: Endpoints.logout.url)
-        request.httpMethod = "DELETE"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         let logoutRequest = LogoutRequest(sessionId: Auth.sessionId)
-        request.httpBody = try! JSONEncoder().encode(logoutRequest)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                completion(false, error)
-                return
-            }
-            do {
-                _ = try JSONDecoder().decode(LogoutResponse.self, from: data)
+
+        taskForDELETERequest(url: Endpoints.logout.url, body: logoutRequest, response: LogoutResponse.self) { response, error in
+            if response != nil {
                 Auth.sessionId = ""
                 Auth.requestToken = ""
                 completion(true, nil)
-            } catch {
+            } else {
                 completion(false, error)
             }
         }
-        task.resume()
     }
     
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {

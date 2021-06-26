@@ -31,6 +31,7 @@ class ApiClient {
         case favorite
         case search(String)
         case markFavorite
+        case addWatchlist
         
         var stringValue: String {
             switch self {
@@ -52,6 +53,8 @@ class ApiClient {
                     return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
                 case .markFavorite:
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
+                case .addWatchlist:
+                    return Endpoints.base + "/account/\(Auth.accountId)/watchlist" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
             }
         }
         

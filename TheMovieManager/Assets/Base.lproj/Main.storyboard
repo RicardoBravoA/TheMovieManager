@@ -372,7 +372,7 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="yrH-SK-k4n" id="fmw-g5-ITo"/>
+                                    <outlet property="dataSource" destination="yrH-SK-k4n" id="goS-XG-Vg6"/>
                                     <outlet property="delegate" destination="yrH-SK-k4n" id="eZg-yh-1TO"/>
                                 </connections>
                             </tableView>
@@ -408,7 +408,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="co5-nL-1jj"/>
+        <segue reference="FxJ-ZB-wWk"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Camera" width="64" height="64"/>

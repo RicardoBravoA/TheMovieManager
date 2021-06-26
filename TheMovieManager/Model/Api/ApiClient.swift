@@ -39,7 +39,7 @@ class ApiClient {
                 case .session:
                     return Endpoints.base + "/authentication/session/new" + Endpoints.apiKeyParam
                 case .webAuth:
-                    return "https://www.themoviedb.org/aurhenticate/" + Auth.requestToken + "?redirect_to=themoviemanager:authenticate"
+                    return "https://www.themoviedb.org/authenticate/" + Auth.requestToken + "?redirect_to=themoviemanager:authenticate"
             }
         }
         

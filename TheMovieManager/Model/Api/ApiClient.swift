@@ -31,7 +31,7 @@ class ApiClient {
         case favorite
         case search(String)
         case markFavorite
-        case addWatchlist
+        case markWatchlist
         
         var stringValue: String {
             switch self {
@@ -53,7 +53,7 @@ class ApiClient {
                     return Endpoints.base + "/search/movie" + Endpoints.apiKeyParam + "&query=\(value.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"
                 case .markFavorite:
                     return Endpoints.base + "/account/\(Auth.accountId)/favorite" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
-                case .addWatchlist:
+                case .markWatchlist:
                     return Endpoints.base + "/account/\(Auth.accountId)/watchlist" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
             }
         }
@@ -156,10 +156,10 @@ class ApiClient {
         }
     }
     
-    class func addFavorite(mediaType: String, mediaId: Int, favorite: Bool, completion: @escaping (Bool, Error?) -> Void) {
-        let markFavoriteRequest = MarkFavoriteRequest(mediaType: mediaType, mediaId: mediaId, favorite: favorite)
+    class func markWatchList(mediaType: String, mediaId: Int, watchlist: Bool, completion: @escaping (Bool, Error?) -> Void) {
+        let markWatchlistRequest = MarkWatchlistRequest(mediaType: mediaType, mediaId: mediaId, watchlist: watchlist)
         
-        taskForPOSTRequest(url: Endpoints.markFavorite.url, body: markFavoriteRequest, response: BasicResponse.self) { response, error in
+        taskForPOSTRequest(url: Endpoints.markWatchlist.url, body: markWatchlistRequest, response: BasicResponse.self) { response, error in
             if response != nil {
                 completion(true, nil)
             } else {

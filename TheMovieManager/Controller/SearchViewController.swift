@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
     var movies = [Movie]()
     
     var selectedIndex = 0
+    var currentSearchTask: URLSessionTask?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
@@ -25,7 +26,9 @@ class SearchViewController: UIViewController {
     }
     
     private func search() {
-        ApiClient.search(query: searchBar.text ?? "your") { response, error in
+        currentSearchTask?.cancel()
+        
+        currentSearchTask = ApiClient.search(query: searchBar.text ?? "your") { response, error in
             self.movies = response
             self.tableView.reloadData()
         }

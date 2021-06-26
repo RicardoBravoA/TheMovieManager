@@ -281,8 +281,8 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Waw-f1-Pfh">
-                                <rect key="frame" x="0.0" y="56" width="375" height="547"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ticket" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Waw-f1-Pfh">
+                                <rect key="frame" x="0.0" y="57.5" width="375" height="543.5"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Uig-FD-P2I"/>
@@ -415,5 +415,6 @@
         <image name="heart.fill" catalog="system" width="128" height="109"/>
         <image name="list.dash" catalog="system" width="128" height="85"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="ticket" catalog="system" width="128" height="84"/>
     </resources>
 </document>

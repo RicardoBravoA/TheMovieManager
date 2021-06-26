@@ -68,7 +68,11 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         
         let movie = movies[indexPath.row]
         
-        cell.textLabel?.text = "\(movie.title) - \(movie.releaseYear)"
+        if movie.releaseYear.isEmpty {
+            cell.textLabel?.text = movie.title
+        } else {
+            cell.textLabel?.text = "\(movie.title) - \(movie.releaseYear)"
+        }
         
         return cell
     }

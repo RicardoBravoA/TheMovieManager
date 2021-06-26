@@ -23,10 +23,9 @@
 		231688752121CB43003C820E /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688742121CB43003C820E /* Movie.swift */; };
 		231688772121CB50003C820E /* MovieResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688762121CB50003C820E /* MovieResults.swift */; };
 		231688792121CB74003C820E /* RequestTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688782121CB74003C820E /* RequestTokenResponse.swift */; };
-		2316887B2121CB87003C820E /* TMDBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316887A2121CB87003C820E /* TMDBResponse.swift */; };
 		2316887D2121CB9A003C820E /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316887C2121CB9A003C820E /* SessionResponse.swift */; };
 		2316887F2121CBC7003C820E /* MarkFavoriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316887E2121CBC7003C820E /* MarkFavoriteRequest.swift */; };
-		231688812121CBD6003C820E /* MarkWatchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688802121CBD6003C820E /* MarkWatchlist.swift */; };
+		231688812121CBD6003C820E /* MarkWatchlistRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688802121CBD6003C820E /* MarkWatchlistRequest.swift */; };
 		231688832121CBE3003C820E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688822121CBE3003C820E /* LoginRequest.swift */; };
 		231688852121CBEA003C820E /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688842121CBEA003C820E /* LogoutRequest.swift */; };
 		231688872121CBF9003C820E /* SessionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688862121CBF9003C820E /* SessionRequest.swift */; };
@@ -36,7 +35,7 @@
 		2316888F2122646A003C820E /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316888E2122646A003C820E /* GradientView.swift */; };
 		2316889121226AE7003C820E /* LoginTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316889021226AE7003C820E /* LoginTextField.swift */; };
 		C6C827DE2686C0470049BB78 /* LogoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C827DD2686C0470049BB78 /* LogoutResponse.swift */; };
-		C6C827E22686EBE00049BB78 /* MarkFavoriteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C827E12686EBE00049BB78 /* MarkFavoriteResponse.swift */; };
+		C6C827E22686EBE00049BB78 /* BasicResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6C827E12686EBE00049BB78 /* BasicResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,10 +57,9 @@
 		231688742121CB43003C820E /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		231688762121CB50003C820E /* MovieResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResults.swift; sourceTree = "<group>"; };
 		231688782121CB74003C820E /* RequestTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTokenResponse.swift; sourceTree = "<group>"; };
-		2316887A2121CB87003C820E /* TMDBResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBResponse.swift; sourceTree = "<group>"; };
 		2316887C2121CB9A003C820E /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
 		2316887E2121CBC7003C820E /* MarkFavoriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFavoriteRequest.swift; sourceTree = "<group>"; };
-		231688802121CBD6003C820E /* MarkWatchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkWatchlist.swift; sourceTree = "<group>"; };
+		231688802121CBD6003C820E /* MarkWatchlistRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkWatchlistRequest.swift; sourceTree = "<group>"; };
 		231688822121CBE3003C820E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		231688842121CBEA003C820E /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
 		231688862121CBF9003C820E /* SessionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionRequest.swift; sourceTree = "<group>"; };
@@ -71,7 +69,7 @@
 		2316888E2122646A003C820E /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		2316889021226AE7003C820E /* LoginTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextField.swift; sourceTree = "<group>"; };
 		C6C827DD2686C0470049BB78 /* LogoutResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResponse.swift; sourceTree = "<group>"; };
-		C6C827E12686EBE00049BB78 /* MarkFavoriteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFavoriteResponse.swift; sourceTree = "<group>"; };
+		C6C827E12686EBE00049BB78 /* BasicResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +171,7 @@
 			isa = PBXGroup;
 			children = (
 				2316887E2121CBC7003C820E /* MarkFavoriteRequest.swift */,
-				231688802121CBD6003C820E /* MarkWatchlist.swift */,
+				231688802121CBD6003C820E /* MarkWatchlistRequest.swift */,
 				231688822121CBE3003C820E /* LoginRequest.swift */,
 				231688842121CBEA003C820E /* LogoutRequest.swift */,
 				231688862121CBF9003C820E /* SessionRequest.swift */,
@@ -187,10 +185,9 @@
 				231688742121CB43003C820E /* Movie.swift */,
 				231688762121CB50003C820E /* MovieResults.swift */,
 				231688782121CB74003C820E /* RequestTokenResponse.swift */,
-				2316887A2121CB87003C820E /* TMDBResponse.swift */,
 				2316887C2121CB9A003C820E /* SessionResponse.swift */,
 				C6C827DD2686C0470049BB78 /* LogoutResponse.swift */,
-				C6C827E12686EBE00049BB78 /* MarkFavoriteResponse.swift */,
+				C6C827E12686EBE00049BB78 /* BasicResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -284,7 +281,7 @@
 				2316888B212230C8003C820E /* UIViewController+Extension.swift in Sources */,
 				231688852121CBEA003C820E /* LogoutRequest.swift in Sources */,
 				2316885F2121CA19003C820E /* MovieDetailViewController.swift in Sources */,
-				231688812121CBD6003C820E /* MarkWatchlist.swift in Sources */,
+				231688812121CBD6003C820E /* MarkWatchlistRequest.swift in Sources */,
 				231688612121CA30003C820E /* SearchViewController.swift in Sources */,
 				231688772121CB50003C820E /* MovieResults.swift in Sources */,
 				231688872121CBF9003C820E /* SessionRequest.swift in Sources */,
@@ -292,7 +289,6 @@
 				2316888F2122646A003C820E /* GradientView.swift in Sources */,
 				C6C827DE2686C0470049BB78 /* LogoutResponse.swift in Sources */,
 				2316887F2121CBC7003C820E /* MarkFavoriteRequest.swift in Sources */,
-				2316887B2121CB87003C820E /* TMDBResponse.swift in Sources */,
 				231688652121CA51003C820E /* FavoritesViewController.swift in Sources */,
 				231688492121C92C003C820E /* AppDelegate.swift in Sources */,
 				2316889121226AE7003C820E /* LoginTextField.swift in Sources */,
@@ -301,7 +297,7 @@
 				231688832121CBE3003C820E /* LoginRequest.swift in Sources */,
 				231688752121CB43003C820E /* Movie.swift in Sources */,
 				2316886A2121CADA003C820E /* LoginButton.swift in Sources */,
-				C6C827E22686EBE00049BB78 /* MarkFavoriteResponse.swift in Sources */,
+				C6C827E22686EBE00049BB78 /* BasicResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

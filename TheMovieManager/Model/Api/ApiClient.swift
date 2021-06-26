@@ -73,76 +73,43 @@ class ApiClient {
     }
     
     class func login(user: String, pwd: String, completion: @escaping (Bool, Error?) -> Void) {
-        var request = URLRequest(url: Endpoints.login.url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         let loginRequest = LoginRequest(username: user, pwd: pwd, requestToken: Auth.requestToken)
-        request.httpBody = try! JSONEncoder().encode(loginRequest)
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                completion(false, error)
-                return
-            }
-            do{
-                let response = try JSONDecoder().decode(RequestTokenResponse.self, from: data)
+        taskForPOSTRequest(url: Endpoints.login.url, body: loginRequest, response: RequestTokenResponse.self) { response, error in
+            if let response = response {
                 Auth.requestToken = response.requestToken
                 completion(true, nil)
-            } catch {
+            } else {
                 completion(false, error)
             }
         }
-        task.resume()
     }
     
     class func session(completion: @escaping (Bool, Error?) -> Void) {
-        var request = URLRequest(url: Endpoints.session.url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         let sessionRequest = SessionRequest(requestToken: Auth.requestToken)
-        request.httpBody = try! JSONEncoder().encode(sessionRequest)
         
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                completion(false, error)
-                return
-            }
-            do {
-                let response = try JSONDecoder().decode(SessionResponse.self, from: data)
+        taskForPOSTRequest(url: Endpoints.session.url, body: sessionRequest, response: SessionResponse.self) { response, error in
+            if let response = response {
                 Auth.sessionId = response.sessionId
                 completion(true, nil)
-            } catch {
+            } else {
                 completion(false, error)
             }
         }
-        task.resume()
     }
     
     class func logout(completion: @escaping (Bool, Error?) -> Void) {
-        var request = URLRequest(url: Endpoints.logout.url)
-        request.httpMethod = "DELETE"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
         let logoutRequest = LogoutRequest(sessionId: Auth.sessionId)
-        request.httpBody = try! JSONEncoder().encode(logoutRequest)
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data else {
-                completion(false, error)
-                return
-            }
-            do {
-                _ = try JSONDecoder().decode(LogoutResponse.self, from: data)
+
+        taskForDELETERequest(url: Endpoints.logout.url, body: logoutRequest, response: LogoutResponse.self) { response, error in
+            if response != nil {
                 Auth.sessionId = ""
                 Auth.requestToken = ""
                 completion(true, nil)
-            } catch {
+            } else {
                 completion(false, error)
             }
         }
-        task.resume()
     }
     
     class func taskForGETRequest<ResponseType: Decodable>(url: URL, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
@@ -157,6 +124,62 @@ class ApiClient {
             let decoder = JSONDecoder()
             do {
                 let response = try decoder.decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(response, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        urlRequest.httpBody = try! JSONEncoder().encode(body)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            do {
+                let response = try JSONDecoder().decode(ResponseType.self, from: data)
+                DispatchQueue.main.async {
+                    completion(response, nil)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    class func taskForDELETERequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, body: RequestType, response: ResponseType.Type, completion: @escaping (ResponseType?, Error?) -> Void) {
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "DELETE"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        urlRequest.httpBody = try! JSONEncoder().encode(body)
+        
+        let task = URLSession.shared.dataTask(with: urlRequest) { data, response, error in
+            guard let data = data else {
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+                return
+            }
+            do {
+                let response = try JSONDecoder().decode(ResponseType.self, from: data)
                 DispatchQueue.main.async {
                     completion(response, nil)
                 }

@@ -58,7 +58,7 @@ class ApiClient {
                 case .markWatchlist:
                     return Endpoints.base + "/account/\(Auth.accountId)/watchlist" + Endpoints.apiKeyParam + "&session_id=\(Auth.sessionId)"
                 case .image(let posterPath):
-                    return "https://image.tmdb.org/t/p/w500/\(posterPath).jpg"
+                    return "https://image.tmdb.org/t/p/w500\(posterPath)"
             }
         }
         
@@ -173,13 +173,18 @@ class ApiClient {
     }
     
     class func image(posterPath: String, completion: @escaping (UIImage?, Error?) -> Void) {
+        print(Endpoints.image(posterPath).url)
         let task = URLSession.shared.dataTask(with: Endpoints.image(posterPath).url) { data, response, error in
             guard let data = data else {
-                completion(nil, error)
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
                 return
             }
             let image = UIImage(data: data)
-            completion(image, nil)
+            DispatchQueue.main.async {
+                completion(image, nil)
+            }
         }
         task.resume()
     }

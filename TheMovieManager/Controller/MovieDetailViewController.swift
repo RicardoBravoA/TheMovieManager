@@ -27,6 +27,10 @@ class MovieDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ApiClient.image(posterPath: movie.posterPath ?? "") { image, error in
+            self.imageView.image = image
+        }
+        
         navigationItem.title = movie.title
         
         toggleBarButton(watchlistBarButtonItem, enabled: isWatchlist)

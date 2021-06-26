@@ -35,11 +35,33 @@ class MovieDetailViewController: UIViewController {
     }
     
     @IBAction func watchlistButtonTapped(_ sender: UIBarButtonItem) {
-        
+        ApiClient.markWatchList(mediaType: Types.movie.rawValue, mediaId: movie.id, watchlist: !isWatchlist) { sucess, error in
+            if sucess {
+                if self.isWatchlist {
+                    if let index = MovieModel.watchlist.firstIndex(of: self.movie) {
+                        MovieModel.watchlist.remove(at: index)
+                    }
+                } else {
+                    MovieModel.watchlist.append(self.movie)
+                }
+                self.toggleBarButton(self.watchlistBarButtonItem, enabled: self.isWatchlist)
+            }
+        }
     }
     
     @IBAction func favoriteButtonTapped(_ sender: UIBarButtonItem) {
-
+        ApiClient.markFavorite(mediaType: Types.movie.rawValue, mediaId: movie.id, favorite: !isFavorite) { sucess, error in
+            if sucess {
+                if self.isFavorite {
+                    if let index = MovieModel.favorites.firstIndex(of: self.movie) {
+                        MovieModel.favorites.remove(at: index)
+                    }
+                } else {
+                    MovieModel.favorites.append(self.movie)
+                }
+                self.toggleBarButton(self.favoriteBarButtonItem, enabled: self.isFavorite)
+            }
+        }
     }
     
     func toggleBarButton(_ button: UIBarButtonItem, enabled: Bool) {

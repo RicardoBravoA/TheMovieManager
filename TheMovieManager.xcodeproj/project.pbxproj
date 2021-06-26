@@ -25,7 +25,7 @@
 		231688792121CB74003C820E /* RequestTokenResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688782121CB74003C820E /* RequestTokenResponse.swift */; };
 		2316887B2121CB87003C820E /* TMDBResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316887A2121CB87003C820E /* TMDBResponse.swift */; };
 		2316887D2121CB9A003C820E /* SessionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316887C2121CB9A003C820E /* SessionResponse.swift */; };
-		2316887F2121CBC7003C820E /* MarkFavorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316887E2121CBC7003C820E /* MarkFavorite.swift */; };
+		2316887F2121CBC7003C820E /* MarkFavoriteRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2316887E2121CBC7003C820E /* MarkFavoriteRequest.swift */; };
 		231688812121CBD6003C820E /* MarkWatchlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688802121CBD6003C820E /* MarkWatchlist.swift */; };
 		231688832121CBE3003C820E /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688822121CBE3003C820E /* LoginRequest.swift */; };
 		231688852121CBEA003C820E /* LogoutRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231688842121CBEA003C820E /* LogoutRequest.swift */; };
@@ -59,7 +59,7 @@
 		231688782121CB74003C820E /* RequestTokenResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTokenResponse.swift; sourceTree = "<group>"; };
 		2316887A2121CB87003C820E /* TMDBResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBResponse.swift; sourceTree = "<group>"; };
 		2316887C2121CB9A003C820E /* SessionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionResponse.swift; sourceTree = "<group>"; };
-		2316887E2121CBC7003C820E /* MarkFavorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFavorite.swift; sourceTree = "<group>"; };
+		2316887E2121CBC7003C820E /* MarkFavoriteRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkFavoriteRequest.swift; sourceTree = "<group>"; };
 		231688802121CBD6003C820E /* MarkWatchlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkWatchlist.swift; sourceTree = "<group>"; };
 		231688822121CBE3003C820E /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		231688842121CBEA003C820E /* LogoutRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequest.swift; sourceTree = "<group>"; };
@@ -170,7 +170,7 @@
 		231688672121CA79003C820E /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				2316887E2121CBC7003C820E /* MarkFavorite.swift */,
+				2316887E2121CBC7003C820E /* MarkFavoriteRequest.swift */,
 				231688802121CBD6003C820E /* MarkWatchlist.swift */,
 				231688822121CBE3003C820E /* LoginRequest.swift */,
 				231688842121CBEA003C820E /* LogoutRequest.swift */,
@@ -288,7 +288,7 @@
 				2316888D2122322D003C820E /* Colors.swift in Sources */,
 				2316888F2122646A003C820E /* GradientView.swift in Sources */,
 				C6C827DE2686C0470049BB78 /* LogoutResponse.swift in Sources */,
-				2316887F2121CBC7003C820E /* MarkFavorite.swift in Sources */,
+				2316887F2121CBC7003C820E /* MarkFavoriteRequest.swift in Sources */,
 				2316887B2121CB87003C820E /* TMDBResponse.swift in Sources */,
 				231688652121CA51003C820E /* FavoritesViewController.swift in Sources */,
 				231688492121C92C003C820E /* AppDelegate.swift in Sources */,
